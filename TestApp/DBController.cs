@@ -9,7 +9,7 @@ namespace TestApp
 {
     internal class DBController
     {
-        static SQLiteConnection connection = new SQLiteConnection("Integrated Security = SSPI; Data Source = TestAppDB.db");
+        static SQLiteConnection connection = new SQLiteConnection("Integrated Security = SSPI; Data Source = ../../TestAppDB.db");
 
         public static long Authorize(string login, string password)
         {
