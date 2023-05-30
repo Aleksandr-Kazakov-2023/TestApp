@@ -1,5 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
@@ -42,6 +41,39 @@ namespace TestApp
             command.Parameters.AddRange(parameters);
             command.ExecuteNonQuery();
             connection.Close();
+        }
+
+        public static List<Test> GetTests(User user = null)
+        {
+            List<Test> tests = new List<Test>();
+
+            connection.Open();
+            string query = "SELECT * FROM Test ";
+            SQLiteParameter[] parameters = { };
+
+            if (user != null)
+            {
+                query += "WHERE TestID IN ( " +
+                         "SELECT Test FROM Question " +
+                         "INNER JOIN UserQuestion " +
+                         "ON Question.QuestionID = UserQuestion.Question " +
+                         "WHERE UserQuestion.User = @userId " +
+                         ")";
+                parameters.Append(new SQLiteParameter("@userId", user.UserID));
+            }
+
+            SQLiteCommand command = new SQLiteCommand(query, connection);
+            command.Parameters.AddRange(parameters);
+            SQLiteDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    tests.Add(new Test(reader.GetInt64(0), reader.GetString(1)));
+                }
+            }
+
+            return tests;
         }
     }
 }

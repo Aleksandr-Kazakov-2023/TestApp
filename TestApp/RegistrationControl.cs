@@ -38,7 +38,7 @@ namespace TestApp
             // TODO: Обработка правильности повторнения пароля
             // TODO: Exception
 
-            DBController.AddUser(new User(firstName, lastName, middleName, email, phone, password));
+            DBController.AddUser(new User(firstName, lastName, middleName, email, phone, password, "user"));
 
             parent.Controls.Clear();
             parent.Controls.Add(new StartControl(parent));

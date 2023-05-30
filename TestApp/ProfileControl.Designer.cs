@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.readyButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.testsDataGridView = new System.Windows.Forms.DataGridView();
+            this.editButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,57 +46,61 @@
             this.testNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.completeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // testsDataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.testsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.testsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.testNameColumn,
             this.resultColumn,
             this.completeColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(511, 26);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(524, 450);
-            this.dataGridView1.TabIndex = 0;
+            this.testsDataGridView.Location = new System.Drawing.Point(511, 26);
+            this.testsDataGridView.Name = "testsDataGridView";
+            this.testsDataGridView.RowHeadersVisible = false;
+            this.testsDataGridView.Size = new System.Drawing.Size(524, 450);
+            this.testsDataGridView.TabIndex = 0;
             // 
-            // readyButton
+            // editButton
             // 
-            this.readyButton.Location = new System.Drawing.Point(873, 482);
-            this.readyButton.Name = "readyButton";
-            this.readyButton.Size = new System.Drawing.Size(162, 31);
-            this.readyButton.TabIndex = 16;
-            this.readyButton.Text = "Редактировать";
-            this.readyButton.UseVisualStyleBackColor = true;
+            this.editButton.Location = new System.Drawing.Point(873, 482);
+            this.editButton.Name = "editButton";
+            this.editButton.Size = new System.Drawing.Size(162, 31);
+            this.editButton.TabIndex = 16;
+            this.editButton.Text = "Редактировать";
+            this.editButton.UseVisualStyleBackColor = true;
+            this.editButton.Visible = false;
             // 
-            // button1
+            // addButton
             // 
-            this.button1.Location = new System.Drawing.Point(705, 482);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 31);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.addButton.Location = new System.Drawing.Point(705, 482);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(162, 31);
+            this.addButton.TabIndex = 17;
+            this.addButton.Text = "Добавить";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Visible = false;
             // 
-            // button2
+            // deleteButton
             // 
-            this.button2.Location = new System.Drawing.Point(537, 482);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(162, 31);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.deleteButton.Location = new System.Drawing.Point(537, 482);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(162, 31);
+            this.deleteButton.TabIndex = 18;
+            this.deleteButton.Text = "Удалить";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Visible = false;
             // 
-            // button3
+            // exitButton
             // 
-            this.button3.Location = new System.Drawing.Point(873, 559);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(162, 31);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "Выход";
-            this.button3.UseVisualStyleBackColor = true;
+            this.exitButton.Location = new System.Drawing.Point(873, 559);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(162, 31);
+            this.exitButton.TabIndex = 19;
+            this.exitButton.Text = "Выход";
+            this.exitButton.UseVisualStyleBackColor = true;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // label5
             // 
@@ -190,18 +194,21 @@
             // 
             // testNameColumn
             // 
+            this.testNameColumn.DataPropertyName = "Name";
             this.testNameColumn.HeaderText = "Название теста";
             this.testNameColumn.Name = "testNameColumn";
             this.testNameColumn.Width = 300;
             // 
             // resultColumn
             // 
+            this.resultColumn.DataPropertyName = "Result";
             this.resultColumn.HeaderText = "Результат";
             this.resultColumn.Name = "resultColumn";
             this.resultColumn.Width = 120;
             // 
             // completeColumn
             // 
+            this.completeColumn.DataPropertyName = "Complete";
             this.completeColumn.HeaderText = "Выполнен";
             this.completeColumn.Name = "completeColumn";
             // 
@@ -219,14 +226,14 @@
             this.Controls.Add(this.middleNameTextBox);
             this.Controls.Add(this.firstNameTextBox);
             this.Controls.Add(this.lastNameTextBox);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.readyButton);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.exitButton);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.editButton);
+            this.Controls.Add(this.testsDataGridView);
             this.Name = "ProfileControl";
             this.Size = new System.Drawing.Size(1063, 617);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.testsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,11 +241,11 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button readyButton;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView testsDataGridView;
+        private System.Windows.Forms.Button editButton;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
