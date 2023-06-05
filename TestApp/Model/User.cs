@@ -26,7 +26,7 @@ namespace TestApp
             this.Email = email;
             this.Phone = phone;
             this.Password = password;
-            this.role = role;
+            this.Role = role;
         }
 
         public User(string firstName, string lastName, string middleName, string email, string phone, string password, string role) :

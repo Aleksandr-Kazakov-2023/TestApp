@@ -10,6 +10,7 @@ namespace TestApp
     {
         private long testID;
         private string name;
+        private List<Question> questions = new List<Question>();
 
         public Test(long testID, string name)
         {
@@ -19,5 +20,6 @@ namespace TestApp
 
         public long TestID { get => testID; set => testID = value; }
         public string Name { get => name; set => name = value; }
+        public List<Question> Questions { get => questions; set => questions = value; }
     }
 }

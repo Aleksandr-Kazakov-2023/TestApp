@@ -139,7 +139,14 @@
       <DependentUpon>StartControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Test.cs" />
+    <Compile Include="TestControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestControl.Designer.cs">
+      <DependentUpon>TestControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="UserTest.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StartControl.resx">
       <DependentUpon>StartControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestControl.resx">
+      <DependentUpon>TestControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

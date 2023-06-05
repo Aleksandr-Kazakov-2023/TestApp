@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.testsDataGridView = new System.Windows.Forms.DataGridView();
+            this.testNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.completeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
+            this.addTestButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,14 +46,13 @@
             this.middleNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
-            this.testNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.completeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.testsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // testsDataGridView
             // 
+            this.testsDataGridView.AllowUserToAddRows = false;
+            this.testsDataGridView.AllowUserToDeleteRows = false;
             this.testsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.testsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.testNameColumn,
@@ -62,6 +64,26 @@
             this.testsDataGridView.Size = new System.Drawing.Size(524, 450);
             this.testsDataGridView.TabIndex = 0;
             // 
+            // testNameColumn
+            // 
+            this.testNameColumn.DataPropertyName = "Name";
+            this.testNameColumn.HeaderText = "Название теста";
+            this.testNameColumn.Name = "testNameColumn";
+            this.testNameColumn.Width = 300;
+            // 
+            // resultColumn
+            // 
+            this.resultColumn.DataPropertyName = "Result";
+            this.resultColumn.HeaderText = "Результат";
+            this.resultColumn.Name = "resultColumn";
+            this.resultColumn.Width = 120;
+            // 
+            // completeColumn
+            // 
+            this.completeColumn.DataPropertyName = "Complete";
+            this.completeColumn.HeaderText = "Выполнен";
+            this.completeColumn.Name = "completeColumn";
+            // 
             // editButton
             // 
             this.editButton.Location = new System.Drawing.Point(873, 482);
@@ -72,19 +94,20 @@
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Visible = false;
             // 
-            // addButton
+            // addTestButton
             // 
-            this.addButton.Location = new System.Drawing.Point(705, 482);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(162, 31);
-            this.addButton.TabIndex = 17;
-            this.addButton.Text = "Добавить";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Visible = false;
+            this.addTestButton.Location = new System.Drawing.Point(537, 482);
+            this.addTestButton.Name = "addTestButton";
+            this.addTestButton.Size = new System.Drawing.Size(162, 31);
+            this.addTestButton.TabIndex = 17;
+            this.addTestButton.Text = "Добавить";
+            this.addTestButton.UseVisualStyleBackColor = true;
+            this.addTestButton.Visible = false;
+            this.addTestButton.Click += new System.EventHandler(this.addTestButton_Click);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(537, 482);
+            this.deleteButton.Location = new System.Drawing.Point(705, 482);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(162, 31);
             this.deleteButton.TabIndex = 18;
@@ -94,7 +117,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(873, 559);
+            this.exitButton.Location = new System.Drawing.Point(873, 543);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(162, 31);
             this.exitButton.TabIndex = 19;
@@ -192,26 +215,6 @@
             this.lastNameTextBox.Size = new System.Drawing.Size(283, 31);
             this.lastNameTextBox.TabIndex = 20;
             // 
-            // testNameColumn
-            // 
-            this.testNameColumn.DataPropertyName = "Name";
-            this.testNameColumn.HeaderText = "Название теста";
-            this.testNameColumn.Name = "testNameColumn";
-            this.testNameColumn.Width = 300;
-            // 
-            // resultColumn
-            // 
-            this.resultColumn.DataPropertyName = "Result";
-            this.resultColumn.HeaderText = "Результат";
-            this.resultColumn.Name = "resultColumn";
-            this.resultColumn.Width = 120;
-            // 
-            // completeColumn
-            // 
-            this.completeColumn.DataPropertyName = "Complete";
-            this.completeColumn.HeaderText = "Выполнен";
-            this.completeColumn.Name = "completeColumn";
-            // 
             // ProfileControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -228,7 +231,7 @@
             this.Controls.Add(this.lastNameTextBox);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.deleteButton);
-            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.addTestButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.testsDataGridView);
             this.Name = "ProfileControl";
@@ -243,7 +246,7 @@
 
         private System.Windows.Forms.DataGridView testsDataGridView;
         private System.Windows.Forms.Button editButton;
-        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button addTestButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.Label label5;

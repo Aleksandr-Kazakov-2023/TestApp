@@ -23,7 +23,12 @@ namespace TestApp
         {
             string login = loginTextBox.Text;
             string pass = passwordTextBox.Text;
-            DBController.Authorize(login, pass);
+            User user = DBController.Authorize(login, pass);
+            if (user != null)
+            {
+                parent.Controls.Clear();
+                parent.Controls.Add(new ProfileControl(parent, user));
+            }
         }
 
         private void regButton_Click(object sender, EventArgs e)

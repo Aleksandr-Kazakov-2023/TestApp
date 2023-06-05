@@ -21,9 +21,9 @@ namespace TestApp
             this.user = user;
             if (user.Role == "admin")
             {
-                editButton.Enabled = true;
-                deleteButton.Enabled = true;
-                addButton.Enabled = true;
+                editButton.Visible = true;
+                deleteButton.Visible = true;
+                addTestButton.Visible = true;
             }
 
             firstNameTextBox.Text = user.FirstName;
@@ -38,7 +38,14 @@ namespace TestApp
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            parent.Controls.Clear();
+            parent.Controls.Add(new StartControl(parent));
+        }
 
+        private void addTestButton_Click(object sender, EventArgs e)
+        {
+            parent.Controls.Clear();
+            parent.Controls.Add(new TestControl(parent));
         }
     }
 }

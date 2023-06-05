@@ -11,9 +11,9 @@ namespace TestApp
     {
         static SQLiteConnection connection = new SQLiteConnection("Integrated Security = SSPI; Data Source = ../../TestAppDB.db");
 
-        public static long Authorize(string login, string password)
+        public static User Authorize(string login, string password)
         {
-            long id = -1;
+            User user = null;
             connection.Open();
             string query = "SELECT * FROM User WHERE EMail = @email AND Password = @password";
             SQLiteCommand command = new SQLiteCommand(query, connection);
@@ -23,10 +23,12 @@ namespace TestApp
             if (reader.HasRows)
             {
                 reader.Read();
-                id = reader.GetInt64(0);
+                user = new User(reader.GetInt64(0), reader.GetString(1), reader.GetString(2),
+                    reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6),
+                    reader.GetString(7));
             }
             connection.Close();
-            return id;
+            return user;
         }
 
         public static void AddUser(User user)
@@ -43,15 +45,15 @@ namespace TestApp
             connection.Close();
         }
 
-        public static List<Test> GetTests(User user = null)
+        public static List<UserTest> GetTests(User user)
         {
-            List<Test> tests = new List<Test>();
+            List<UserTest> tests = new List<UserTest>();
 
             connection.Open();
             string query = "SELECT * FROM Test ";
             SQLiteParameter[] parameters = { };
 
-            if (user != null)
+            if (user.Role == "user")
             {
                 query += "WHERE TestID IN ( " +
                          "SELECT Test FROM Question " +
@@ -69,7 +71,7 @@ namespace TestApp
             {
                 while (reader.Read())
                 {
-                    tests.Add(new Test(reader.GetInt64(0), reader.GetString(1)));
+                    tests.Add(new UserTest(reader.GetInt64(0), reader.GetString(1), 0, false));
                 }
             }
 
