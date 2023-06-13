@@ -28,10 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.nextButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
+            this.splitContainer.Panel2.SuspendLayout();
+            this.splitContainer.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // splitContainer
+            // 
+            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer.Name = "splitContainer";
+            this.splitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.Controls.Add(this.cancelButton);
+            this.splitContainer.Panel2.Controls.Add(this.nextButton);
+            this.splitContainer.Size = new System.Drawing.Size(1018, 555);
+            this.splitContainer.SplitterDistance = 429;
+            this.splitContainer.TabIndex = 0;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(818, 46);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(162, 31);
+            this.cancelButton.TabIndex = 20;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Visible = false;
+            // 
+            // nextButton
+            // 
+            this.nextButton.Location = new System.Drawing.Point(430, 46);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(162, 31);
+            this.nextButton.TabIndex = 19;
+            this.nextButton.Text = "Далее";
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Visible = false;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            // 
+            // TestingControl
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.splitContainer);
+            this.Name = "TestingControl";
+            this.Size = new System.Drawing.Size(1018, 555);
+            this.splitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
+            this.splitContainer.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.SplitContainer splitContainer;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button nextButton;
     }
 }

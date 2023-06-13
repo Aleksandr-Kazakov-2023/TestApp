@@ -12,9 +12,17 @@ namespace TestApp.View.Quiz
 {
     public partial class MultipleSelectQuizControl : UserControl
     {
-        public MultipleSelectQuizControl()
+        Question question;
+        public MultipleSelectQuizControl(Question question)
         {
             InitializeComponent();
+            this.question = question;
+            questionLabel.Text = question.Text;
+        }
+
+        private void readyButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

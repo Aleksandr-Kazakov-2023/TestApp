@@ -61,8 +61,10 @@
             this.testsDataGridView.Location = new System.Drawing.Point(511, 26);
             this.testsDataGridView.Name = "testsDataGridView";
             this.testsDataGridView.RowHeadersVisible = false;
+            this.testsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.testsDataGridView.Size = new System.Drawing.Size(524, 450);
             this.testsDataGridView.TabIndex = 0;
+            this.testsDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.testsDataGridView_CellMouseDoubleClick);
             // 
             // testNameColumn
             // 

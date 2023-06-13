@@ -12,9 +12,17 @@ namespace TestApp.View.Quiz
 {
     public partial class WriteAnswerQuizControl : UserControl
     {
-        public WriteAnswerQuizControl()
+        Question question;
+        public WriteAnswerQuizControl(Question question)
         {
             InitializeComponent();
+            this.question = question;
+            questionLabel.Text = question.Text;
+        }
+
+        private void readyButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

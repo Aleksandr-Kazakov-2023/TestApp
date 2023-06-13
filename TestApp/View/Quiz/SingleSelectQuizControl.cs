@@ -12,9 +12,12 @@ namespace TestApp.View.Quiz
 {
     public partial class SingleSelectQuizControl : UserControl
     {
-        public SingleSelectQuizControl()
+        Question question;
+        public SingleSelectQuizControl(Question question)
         {
             InitializeComponent();
+            this.question = question;
+            questionLabel.Text = question.Text;
         }
     }
 }

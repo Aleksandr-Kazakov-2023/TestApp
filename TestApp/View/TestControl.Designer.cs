@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.questionsDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answersDataGridView = new System.Windows.Forms.DataGridView();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.addQuestionButton = new System.Windows.Forms.Button();
             this.removeQuestionButton = new System.Windows.Forms.Button();
             this.removeAnswerButton = new System.Windows.Forms.Button();
             this.addAnswerButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.questionsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.answersDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +85,7 @@
             this.addButton.TabIndex = 17;
             this.addButton.Text = "Создать";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // questionsDataGridView
             // 
@@ -100,6 +101,33 @@
             this.questionsDataGridView.RowHeadersVisible = false;
             this.questionsDataGridView.Size = new System.Drawing.Size(455, 291);
             this.questionsDataGridView.TabIndex = 19;
+            this.questionsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.questionsDataGridView_CellClick);
+            this.questionsDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.questionsDataGridView_CellEndEdit);
+            this.questionsDataGridView.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.questionsDataGridView_EditingControlShowing);
+            // 
+            // Column1
+            // 
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column1.HeaderText = "Текст вопроса";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 240;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Тип вопроса";
+            this.Column2.Items.AddRange(new object[] {
+            "Один правильный ответ",
+            "Несколько правильных ответов",
+            "Написать ответ"});
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 130;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Баллы";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 80;
             // 
             // answersDataGridView
             // 
@@ -114,18 +142,7 @@
             this.answersDataGridView.RowHeadersVisible = false;
             this.answersDataGridView.Size = new System.Drawing.Size(285, 291);
             this.answersDataGridView.TabIndex = 20;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Текст ответа";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Правильный";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 80;
+            this.answersDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.answersDataGridView_CellEndEdit);
             // 
             // addQuestionButton
             // 
@@ -185,29 +202,19 @@
             this.label3.TabIndex = 26;
             this.label3.Text = "Ответы";
             // 
-            // Column1
+            // Column4
             // 
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column1.HeaderText = "Текст вопроса";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 240;
+            this.Column4.DataPropertyName = "Text";
+            this.Column4.HeaderText = "Текст ответа";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 200;
             // 
-            // Column2
+            // Column5
             // 
-            this.Column2.HeaderText = "Тип вопроса";
-            this.Column2.Items.AddRange(new object[] {
-            "Один правильный ответ",
-            "Несколько правильных ответов",
-            "Написать ответ"});
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 130;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Баллы";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 80;
+            this.Column5.DataPropertyName = "IsCorrect";
+            this.Column5.HeaderText = "Правильный";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 80;
             // 
             // TestControl
             // 
@@ -242,8 +249,6 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.DataGridView questionsDataGridView;
         private System.Windows.Forms.DataGridView answersDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column5;
         private System.Windows.Forms.Button addQuestionButton;
         private System.Windows.Forms.Button removeQuestionButton;
         private System.Windows.Forms.Button removeAnswerButton;
@@ -253,5 +258,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column5;
     }
 }

@@ -18,6 +18,11 @@ namespace TestApp
             this.Name = name;
         }
 
+        public Test()
+        {
+
+        }
+
         public long TestID { get => testID; set => testID = value; }
         public string Name { get => name; set => name = value; }
         public List<Question> Questions { get => questions; set => questions = value; }

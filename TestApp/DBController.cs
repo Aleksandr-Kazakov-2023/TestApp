@@ -45,23 +45,29 @@ namespace TestApp
             connection.Close();
         }
 
-        public static List<UserTest> GetTests(User user)
+        public static List<Test> GetTests(User user)
         {
-            List<UserTest> tests = new List<UserTest>();
+            List<Test> tests = new List<Test>();
 
             connection.Open();
-            string query = "SELECT * FROM Test ";
+            string query = "";
             SQLiteParameter[] parameters = { };
 
             if (user.Role == "user")
             {
-                query += "WHERE TestID IN ( " +
-                         "SELECT Test FROM Question " +
-                         "INNER JOIN UserQuestion " +
-                         "ON Question.QuestionID = UserQuestion.Question " +
-                         "WHERE UserQuestion.User = @userId " +
+                // TODO: Список всех тестов, но с пометкой баллов и прохождения для тех, которые проходил пользователь.
+                query += "SELECT TestID, Name, SUM(Score) FROM Test " +
+                         "WHERE TestID IN ( " +
+                         "  SELECT Test FROM Question " +
+                         "  LEFT JOIN UserQuestion " +
+                         "  ON Question.QuestionID = UserQuestion.Question " +
+                         "  WHERE UserQuestion.User = @userId " +
                          ")";
                 parameters.Append(new SQLiteParameter("@userId", user.UserID));
+            }
+            else
+            {
+                query += "SELECT TestID, Name FROM Test";
             }
 
             SQLiteCommand command = new SQLiteCommand(query, connection);
@@ -71,11 +77,26 @@ namespace TestApp
             {
                 while (reader.Read())
                 {
-                    tests.Add(new UserTest(reader.GetInt64(0), reader.GetString(1), 0, false));
+                    if (user.Role == "user")
+                        tests.Add(new UserTest(reader.GetInt64(0), reader.GetString(1), reader.GetDouble(2), false));
+                    else
+                        tests.Add(new Test(reader.GetInt64(0), reader.GetString(1)));
+
                 }
             }
-
+            connection.Close();
             return tests;
         }
+
+        public static void AddTest(Test test)
+        {
+
+        }
+
+        /*
+         * 1. Добавление Теста (с вопросами) в БД
+         * 2. 
+         * 
+         */
     }
 }

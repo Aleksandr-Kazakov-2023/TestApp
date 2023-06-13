@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestApp.View;
 
 namespace TestApp
 {
@@ -14,6 +15,7 @@ namespace TestApp
     {
         Control parent;
         User user;
+        List<Test> tests;
         public ProfileControl(Control parent, User user)
         {
             InitializeComponent();
@@ -32,8 +34,8 @@ namespace TestApp
             emailTextBox.Text = user.Email;
             phoneTextBox.Text = user.Phone;
 
-            // TODO: Запрос по результатам
-            // testsDataGridView.DataSource = DBController.GetTests(user);
+            tests = DBController.GetTests(user);
+            testsDataGridView.DataSource = tests;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -46,6 +48,16 @@ namespace TestApp
         {
             parent.Controls.Clear();
             parent.Controls.Add(new TestControl(parent));
+        }
+
+        private void testsDataGridView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int currentRow = testsDataGridView.CurrentCell.RowIndex;
+            if (currentRow != -1)
+            {
+                parent.Controls.Clear();
+                parent.Controls.Add(new TestingControl(parent, tests[currentRow]));
+            }
         }
     }
 }

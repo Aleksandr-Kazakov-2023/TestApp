@@ -10,7 +10,7 @@ namespace TestApp
     {
         private long answerId;
         private string text;
-        private bool isCorrect;
+        private bool isCorrect = false;
         private Question question;
 
         public Answer(long answerId, string text, bool isCorrect)

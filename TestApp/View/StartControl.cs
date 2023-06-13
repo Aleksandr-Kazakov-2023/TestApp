@@ -21,8 +21,8 @@ namespace TestApp
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            string login = loginTextBox.Text;
-            string pass = passwordTextBox.Text;
+            string login = /*loginTextBox.Text*/"sidor@gmail.com";
+            string pass = /*passwordTextBox.Text*/"admin";
             User user = DBController.Authorize(login, pass);
             if (user != null)
             {
