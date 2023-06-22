@@ -35,7 +35,7 @@ namespace TestApp
             phoneTextBox.Text = user.Phone;
 
             tests = DBController.GetTests(user);
-            testsDataGridView.DataSource = tests;
+            //testsDataGridView.DataSource = tests;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -58,6 +58,11 @@ namespace TestApp
                 parent.Controls.Clear();
                 parent.Controls.Add(new TestingControl(parent, tests[currentRow]));
             }
+        }
+
+        private void ProfileControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

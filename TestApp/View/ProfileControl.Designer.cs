@@ -238,6 +238,7 @@
             this.Controls.Add(this.testsDataGridView);
             this.Name = "ProfileControl";
             this.Size = new System.Drawing.Size(1063, 617);
+            this.Load += new System.EventHandler(this.ProfileControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.testsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

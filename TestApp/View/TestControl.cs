@@ -41,7 +41,11 @@ namespace TestApp
 
         private void addButton_Click(object sender, EventArgs e)
         {
-
+            Test test = new Test();
+            test.Name = nameTextBox.Text;
+            test.Questions = questions;
+            // TODO: Валидация имени теста
+            DBController.AddTest(test);
         }
 
         private void questionsDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
