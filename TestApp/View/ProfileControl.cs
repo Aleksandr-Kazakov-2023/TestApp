@@ -24,9 +24,10 @@ namespace TestApp
             this.user = user;
             if (user.Role == "admin")
             {
-                editButton.Visible = true;
                 deleteButton.Visible = true;
                 addTestButton.Visible = true;
+                testsDataGridView.ColumnCount = 1;
+
             }
 
             firstNameTextBox.Text = user.FirstName;

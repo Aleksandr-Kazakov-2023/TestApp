@@ -32,7 +32,6 @@
             this.testNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.completeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editButton = new System.Windows.Forms.Button();
             this.addTestButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
@@ -86,19 +85,9 @@
             this.completeColumn.HeaderText = "Выполнен";
             this.completeColumn.Name = "completeColumn";
             // 
-            // editButton
-            // 
-            this.editButton.Location = new System.Drawing.Point(873, 482);
-            this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(162, 31);
-            this.editButton.TabIndex = 16;
-            this.editButton.Text = "Редактировать";
-            this.editButton.UseVisualStyleBackColor = true;
-            this.editButton.Visible = false;
-            // 
             // addTestButton
             // 
-            this.addTestButton.Location = new System.Drawing.Point(537, 482);
+            this.addTestButton.Location = new System.Drawing.Point(705, 482);
             this.addTestButton.Name = "addTestButton";
             this.addTestButton.Size = new System.Drawing.Size(162, 31);
             this.addTestButton.TabIndex = 17;
@@ -109,7 +98,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(705, 482);
+            this.deleteButton.Location = new System.Drawing.Point(873, 482);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(162, 31);
             this.deleteButton.TabIndex = 18;
@@ -235,7 +224,6 @@
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.addTestButton);
-            this.Controls.Add(this.editButton);
             this.Controls.Add(this.testsDataGridView);
             this.Name = "ProfileControl";
             this.Size = new System.Drawing.Size(1063, 617);
@@ -249,7 +237,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView testsDataGridView;
-        private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button addTestButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button exitButton;
