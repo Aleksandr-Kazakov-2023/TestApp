@@ -75,14 +75,14 @@
             // 
             // resultColumn
             // 
-            this.resultColumn.DataPropertyName = "Result";
+            this.resultColumn.DataPropertyName = "Score";
             this.resultColumn.HeaderText = "Результат";
             this.resultColumn.Name = "resultColumn";
             this.resultColumn.Width = 120;
             // 
             // completeColumn
             // 
-            this.completeColumn.DataPropertyName = "Complete";
+            this.completeColumn.DataPropertyName = "IsComplete";
             this.completeColumn.HeaderText = "Выполнен";
             this.completeColumn.Name = "completeColumn";
             // 
@@ -116,6 +116,7 @@
             this.deleteButton.Text = "Удалить";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Visible = false;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // exitButton
             // 

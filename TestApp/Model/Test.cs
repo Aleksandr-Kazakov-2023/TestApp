@@ -12,6 +12,9 @@ namespace TestApp
         private string name;
         private List<Question> questions = new List<Question>();
 
+        public virtual double Score { get; set; }
+        public virtual bool IsComplete { get; set; }
+
         public Test(long testID, string name)
         {
             this.TestID = testID;

@@ -10,9 +10,13 @@ using System.Windows.Forms;
 
 namespace TestApp.View.Quiz
 {
-    public partial class WriteAnswerQuizControl : UserControl
+    public partial class WriteAnswerQuizControl : UserControl, IQuiz
     {
-        Question question;
+        private Question question;
+        private double result;
+        public double Result => this.result;
+        Question IQuiz.question => this.question;
+
         public WriteAnswerQuizControl(Question question)
         {
             InitializeComponent();
@@ -21,6 +25,13 @@ namespace TestApp.View.Quiz
         }
 
         private void readyButton_Click(object sender, EventArgs e)
+        {
+            string userAnswer = answerTextBox.Text.Trim().ToLower();
+            result = userAnswer == question.Answers[0].Text ? question.Rank : 0;
+            readyButton.Enabled = false;
+        }
+
+        private void WriteAnswerQuizControl_Load(object sender, EventArgs e)
         {
 
         }

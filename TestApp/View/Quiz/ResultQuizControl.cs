@@ -8,19 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TestApp
+namespace TestApp.View.Quiz
 {
-    public partial class MainForm : Form
+    public partial class ResultQuizControl : UserControl
     {
-        public MainForm()
+        public ResultQuizControl(double result)
         {
             InitializeComponent();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            StartControl sc = new StartControl();
-            this.Controls.Add(sc);
+            resultLabel.Text = $"Ваш результат: {result.ToString()}%";
         }
     }
 }

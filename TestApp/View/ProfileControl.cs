@@ -13,9 +13,10 @@ namespace TestApp
 {
     public partial class ProfileControl : UserControl
     {
-        Control parent;
-        User user;
-        List<Test> tests;
+        private Control parent;
+        private User user;
+        private List<Test> tests;
+
         public ProfileControl(Control parent, User user)
         {
             InitializeComponent();
@@ -34,14 +35,15 @@ namespace TestApp
             emailTextBox.Text = user.Email;
             phoneTextBox.Text = user.Phone;
 
+            testsDataGridView.AutoGenerateColumns = false;
             tests = DBController.GetTests(user);
-            //testsDataGridView.DataSource = tests;
+            testsDataGridView.DataSource = tests;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
             parent.Controls.Clear();
-            parent.Controls.Add(new StartControl(parent));
+            parent.Controls.Add(new StartControl());
         }
 
         private void addTestButton_Click(object sender, EventArgs e)
@@ -63,6 +65,18 @@ namespace TestApp
         private void ProfileControl_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            int currentRow = testsDataGridView.CurrentCell.RowIndex;
+            if (currentRow != -1)
+            {
+                DBController.DeleteTest(tests[currentRow].TestID);
+                testsDataGridView.DataSource = null;
+                tests = DBController.GetTests(user);
+                testsDataGridView.DataSource = tests;
+            }
         }
     }
 }

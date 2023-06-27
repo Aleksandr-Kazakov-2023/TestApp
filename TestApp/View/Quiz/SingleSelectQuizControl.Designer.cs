@@ -58,6 +58,7 @@
             this.readyButton.TabIndex = 18;
             this.readyButton.Text = "Ответить";
             this.readyButton.UseVisualStyleBackColor = true;
+            this.readyButton.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // SingleSelectQuizControl
             // 

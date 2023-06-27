@@ -5,13 +5,14 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestApp.Model;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace TestApp
 {
     internal class DBController
     {
-        static SQLiteConnection connection = new SQLiteConnection("Integrated Security = SSPI; Data Source = ../../TestAppDB.db; Version=3; MultipleActiveResultSets=True;");
+        static SQLiteConnection connection = new SQLiteConnection("Integrated Security = SSPI; Data Source = ../../TestAppDB.db; Version=3; MultipleActiveResultSets=True; foreign keys=True");
 
         public static User Authorize(string login, string password)
         {
@@ -57,12 +58,11 @@ namespace TestApp
 
             string getUserTestsQuery = "SELECT TestID, Name, IFNULL(( " +
                      "  SELECT SUM(IFNULL(Score, 0)) FROM UserQuestion " +
-                     "  WHERE UserQuestion.User = @userId " +
+                     "  INNER JOIN Question " +
+                     "  ON UserQuestion.Question = Question.QuestionID " +
+                     "  WHERE UserQuestion.User = 2 AND Question.Test = TestID" +
                      "), 0) S " +
-                     "FROM Test " +
-                     "INNER JOIN Question " +
-                     "ON Test.TestID = Question.Test " +
-                     "GROUP BY S";
+                     "FROM Test";
             SQLiteParameter[] getUserTestsParameters = { new SQLiteParameter("@userId", user.UserID) };
 
             string getTestQuestionQuery = "SELECT QuestionID, Text, Type, Rank, IFNULL(Photo, \"\"), Test FROM Question " +
@@ -150,6 +150,37 @@ namespace TestApp
                     insertAnswerCommand.ExecuteNonQuery();
                 }
             }
+            connection.Close();
+        }
+
+        public static void AddUserTestings(List<UserQuestion> userQuestions)
+        {
+            connection.Open();
+
+            string query = "INSERT INTO UserQuestion (User, Question, Score, Date) VALUES (@user, @question, @score, @date)";
+            foreach (UserQuestion question in userQuestions)
+            {
+                SQLiteCommand command = new SQLiteCommand(query, connection);
+                SQLiteParameter[] parameters = { new SQLiteParameter("@user", question.User.UserID),
+                    new SQLiteParameter("@question", question.Question.QuestionId), new SQLiteParameter("@score", question.Score), new SQLiteParameter("@date", question.Date) };
+                command.Parameters.AddRange(parameters);
+                command.ExecuteNonQuery();
+            }
+
+            connection.Close();
+        }
+
+        public static void DeleteTest(long testId)
+        {
+            connection.Open();
+
+            string query = "DELETE FROM Test WHERE TestID = @testId";
+
+            SQLiteCommand command = new SQLiteCommand(query, connection);
+            SQLiteParameter[] parameters = { new SQLiteParameter("@testId", testId) };
+            command.Parameters.AddRange(parameters);
+            command.ExecuteNonQuery();
+
             connection.Close();
         }
     }

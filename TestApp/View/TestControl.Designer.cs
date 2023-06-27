@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -38,14 +38,14 @@
             this.Column2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.answersDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.addQuestionButton = new System.Windows.Forms.Button();
             this.removeQuestionButton = new System.Windows.Forms.Button();
             this.removeAnswerButton = new System.Windows.Forms.Button();
             this.addAnswerButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.questionsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.answersDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -76,6 +76,7 @@
             this.cancelButton.TabIndex = 18;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // addButton
             // 
@@ -107,8 +108,8 @@
             // 
             // Column1
             // 
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column1.HeaderText = "Текст вопроса";
             this.Column1.Name = "Column1";
             this.Column1.Width = 240;
@@ -143,6 +144,20 @@
             this.answersDataGridView.Size = new System.Drawing.Size(285, 291);
             this.answersDataGridView.TabIndex = 20;
             this.answersDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.answersDataGridView_CellEndEdit);
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Text";
+            this.Column4.HeaderText = "Текст ответа";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "IsCorrect";
+            this.Column5.HeaderText = "Правильный";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 80;
             // 
             // addQuestionButton
             // 
@@ -201,20 +216,6 @@
             this.label3.Size = new System.Drawing.Size(80, 24);
             this.label3.TabIndex = 26;
             this.label3.Text = "Ответы";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Text";
-            this.Column4.HeaderText = "Текст ответа";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 200;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "IsCorrect";
-            this.Column5.HeaderText = "Правильный";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 80;
             // 
             // TestControl
             // 

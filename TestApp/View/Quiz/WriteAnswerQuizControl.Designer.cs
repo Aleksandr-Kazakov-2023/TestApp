@@ -68,6 +68,7 @@
             this.Controls.Add(this.questionLabel);
             this.Name = "WriteAnswerQuizControl";
             this.Size = new System.Drawing.Size(867, 327);
+            this.Load += new System.EventHandler(this.WriteAnswerQuizControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

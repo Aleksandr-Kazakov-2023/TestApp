@@ -46,6 +46,8 @@ namespace TestApp
             test.Questions = questions;
             // TODO: Валидация имени теста
             DBController.AddTest(test);
+            parent.Controls.Clear();
+            parent.Controls.Add(new ProfileControl(this, ((StartControl)parent).User));
         }
 
         private void questionsDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -127,8 +129,12 @@ namespace TestApp
                 answersDataGridView[0, i].Value = questions[currentRow].Answers[i].Text;
                 answersDataGridView[1, i].Value = questions[currentRow].Answers[i].IsCorrect;
             }
+        }
 
-
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            parent.Controls.Clear();
+            parent.Controls.Add(new ProfileControl(parent, ((StartControl)parent).User));
         }
     }
 }

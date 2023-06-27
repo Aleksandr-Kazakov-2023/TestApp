@@ -57,9 +57,9 @@
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(162, 31);
             this.cancelButton.TabIndex = 20;
-            this.cancelButton.Text = "Отмена";
+            this.cancelButton.Text = "Завершить";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Visible = false;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // nextButton
             // 
@@ -69,7 +69,6 @@
             this.nextButton.TabIndex = 19;
             this.nextButton.Text = "Далее";
             this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Visible = false;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // TestingControl

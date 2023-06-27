@@ -10,13 +10,13 @@ namespace TestApp
     {
         private double score;
         private bool isComplete;
+        public override double Score { get; set; }
+        public override bool IsComplete { get; set; }
+
         public UserTest(long testID, string name, double score, bool isComplete) : base(testID, name)
         {
             this.Score = score;
             this.IsComplete = isComplete;
         }
-
-        public double Score { get => score; set => score = value; }
-        public bool IsComplete { get => isComplete; set => isComplete = value; }
     }
 }

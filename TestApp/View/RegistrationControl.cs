@@ -22,7 +22,7 @@ namespace TestApp
         private void cancelButton_Click(object sender, EventArgs e)
         {
             parent.Controls.Clear();
-            parent.Controls.Add(new StartControl(parent));
+            parent.Controls.Add(new StartControl());
         }
 
         private void readyButton_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace TestApp
             DBController.AddUser(new User(firstName, lastName, middleName, email, phone, password, "user"));
 
             parent.Controls.Clear();
-            parent.Controls.Add(new StartControl(parent));
+            parent.Controls.Add(new StartControl());
         }
     }
 }

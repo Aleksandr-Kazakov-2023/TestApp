@@ -113,6 +113,7 @@
   <ItemGroup>
     <Compile Include="Model\Answer.cs" />
     <Compile Include="DBController.cs" />
+    <Compile Include="Model\UserQuestion.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,11 +129,18 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Question.cs" />
+    <Compile Include="View\Quiz\IQuiz.cs" />
     <Compile Include="View\Quiz\MultipleSelectQuizControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\Quiz\MultipleSelectQuizControl.Designer.cs">
       <DependentUpon>MultipleSelectQuizControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Quiz\ResultQuizControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Quiz\ResultQuizControl.Designer.cs">
+      <DependentUpon>ResultQuizControl.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Quiz\SingleSelectQuizControl.cs">
       <SubType>UserControl</SubType>
@@ -191,6 +199,9 @@
     </Compile>
     <EmbeddedResource Include="View\Quiz\MultipleSelectQuizControl.resx">
       <DependentUpon>MultipleSelectQuizControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Quiz\ResultQuizControl.resx">
+      <DependentUpon>ResultQuizControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Quiz\SingleSelectQuizControl.resx">
       <DependentUpon>SingleSelectQuizControl.cs</DependentUpon>

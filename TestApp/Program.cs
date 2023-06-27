@@ -9,7 +9,11 @@ namespace TestApp
     internal static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// Расширенные функции следующей версии:
+        /// 1. Возвращение к предыдущим вопросам для редактирования ответов.
+        /// 2. Продолжение тестирования после прекращения работы приложения.
+        /// 3. Редактирование тестов
+        /// 4. Хранение истории тестирований
         /// </summary>
         [STAThread]
         static void Main()
