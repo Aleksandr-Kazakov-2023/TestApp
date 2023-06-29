@@ -48,6 +48,7 @@
             this.Controls.Add(this.resultLabel);
             this.Name = "ResultQuizControl";
             this.Size = new System.Drawing.Size(967, 362);
+            this.Load += new System.EventHandler(this.ResultQuizControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

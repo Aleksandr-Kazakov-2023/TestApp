@@ -76,5 +76,10 @@ namespace TestApp.View
             parent.Controls.Clear();
             parent.Controls.Add(new ProfileControl(parent, ((StartControl)parent).User));
         }
+
+        private void splitContainer_Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

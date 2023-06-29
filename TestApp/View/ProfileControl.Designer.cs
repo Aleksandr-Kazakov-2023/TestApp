@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.testsDataGridView = new System.Windows.Forms.DataGridView();
             this.testNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +49,9 @@
             this.middleNameTextBox = new System.Windows.Forms.TextBox();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.testsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
             // testsDataGridView
@@ -61,7 +67,7 @@
             this.testsDataGridView.Name = "testsDataGridView";
             this.testsDataGridView.RowHeadersVisible = false;
             this.testsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.testsDataGridView.Size = new System.Drawing.Size(524, 450);
+            this.testsDataGridView.Size = new System.Drawing.Size(524, 371);
             this.testsDataGridView.TabIndex = 0;
             this.testsDataGridView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.testsDataGridView_CellMouseDoubleClick);
             // 
@@ -87,7 +93,7 @@
             // 
             // addTestButton
             // 
-            this.addTestButton.Location = new System.Drawing.Point(705, 482);
+            this.addTestButton.Location = new System.Drawing.Point(705, 403);
             this.addTestButton.Name = "addTestButton";
             this.addTestButton.Size = new System.Drawing.Size(162, 31);
             this.addTestButton.TabIndex = 17;
@@ -98,7 +104,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(873, 482);
+            this.deleteButton.Location = new System.Drawing.Point(873, 403);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(162, 31);
             this.deleteButton.TabIndex = 18;
@@ -109,7 +115,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(873, 543);
+            this.exitButton.Location = new System.Drawing.Point(873, 553);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(162, 31);
             this.exitButton.TabIndex = 19;
@@ -207,10 +213,36 @@
             this.lastNameTextBox.Size = new System.Drawing.Size(283, 31);
             this.lastNameTextBox.TabIndex = 20;
             // 
+            // chart
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart.Legends.Add(legend2);
+            this.chart.Location = new System.Drawing.Point(62, 421);
+            this.chart.Name = "chart";
+            this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series3.Legend = "Legend1";
+            series3.LegendText = "Неправильные";
+            series3.Name = "Series2";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series4.Legend = "Legend1";
+            series4.LegendText = "Правильные";
+            series4.Name = "Series1";
+            this.chart.Series.Add(series3);
+            this.chart.Series.Add(series4);
+            this.chart.Size = new System.Drawing.Size(602, 163);
+            this.chart.TabIndex = 30;
+            this.chart.Text = "chart1";
+            // 
             // ProfileControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chart);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -229,6 +261,7 @@
             this.Size = new System.Drawing.Size(1063, 617);
             this.Load += new System.EventHandler(this.ProfileControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.testsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,5 +286,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn testNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn completeColumn;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
     }
 }

@@ -39,6 +39,16 @@ namespace TestApp
             testsDataGridView.AutoGenerateColumns = false;
             tests = DBController.GetTests(user);
             testsDataGridView.DataSource = tests;
+
+            // ------------------------------------------------------------
+            Test[] userTests = tests.ToArray();
+
+            foreach (Test test in userTests)
+            {
+                chart.Series[0].Points.AddXY(test.Name, test.Score);
+                chart.Series[1].Points.AddXY(test.Name, test.Questions.Count - test.Score);
+            }
+            // -------------------------------------------------------------
         }
 
         private void exitButton_Click(object sender, EventArgs e)

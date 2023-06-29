@@ -17,5 +17,10 @@ namespace TestApp.View.Quiz
             InitializeComponent();
             resultLabel.Text = $"Ваш результат: {result.ToString()}%";
         }
+
+        private void ResultQuizControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
